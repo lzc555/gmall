@@ -1,0 +1,27 @@
+server:
+  port: 8085
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.17.135:8848
+        namespace: 29a2eaab-a0e9-4620-a335-e5085ed67b91
+        cluster-name: dev
+  #  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.17.135:3306/guli_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    username: root
+#    password: 782954
+  datasource:
+    url: jdbc:mysql://192.168.17.135:3306/guli_sms?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 782954
+  redis:
+    host: 192.168.17.135
+    port: 6379
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  mapper-locations: classpath:mapper/sms/**/*.xml
