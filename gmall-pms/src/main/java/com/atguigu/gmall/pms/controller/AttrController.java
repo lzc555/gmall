@@ -33,6 +33,14 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
+    @ApiOperation("根据条件分页查询")
+    @GetMapping
+    public Resp<PageVo> queryAttrsByCid(QueryCondition queryCondition, @RequestParam("cid") Long cid, @RequestParam(value = "type", defaultValue = "1") Integer type) {
+        PageVo page = attrService.queryAttrsByCid(queryCondition,cid,type);
+
+        return Resp.ok(page);
+    }
+
     /**
      * 列表
      */

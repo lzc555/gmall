@@ -7,6 +7,7 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.vo.GroupVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,20 @@ public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
 
+    @ApiOperation("根据分组id查询分组及组下的规格参数")
+    @GetMapping("withattr/{gid}")
+    public Resp<GroupVO> queryGroupWithAttrByGid(@PathVariable("gid") Long gid) {
+        GroupVO groupVO = this.attrGroupService.queryGroupWithAttrByGid(gid);
+        return Resp.ok(groupVO);
+    }
+
+    @ApiOperation("根据三级分类id分页查询")
+    @GetMapping("{catId}")
+    public Resp<PageVo> queryGroupByPage(QueryCondition condition,@PathVariable("catId") Long catId){
+        PageVo pageVo = attrGroupService.queryGroupByPage(condition,catId);
+        return Resp.ok(pageVo);
+    }
+
     /**
      * 列表
      */
@@ -40,6 +55,7 @@ public class AttrGroupController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('pms:attrgroup:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
+
         PageVo page = attrGroupService.queryPage(queryCondition);
 
         return Resp.ok(page);

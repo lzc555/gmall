@@ -35,6 +35,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @ApiOperation("根据分类等级或者父id查询分类")
     @GetMapping
     public Resp<List<CategoryEntity>> queryCategoriesByPidOrLevel(@RequestParam(value = "level", defaultValue = "0") Integer level, @RequestParam(value = "parentCid", required = false) Long pid) {
         QueryWrapper<CategoryEntity> wrapper = new QueryWrapper<>();
