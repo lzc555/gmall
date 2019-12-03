@@ -5,7 +5,7 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.17.135:8848
-        namespace: 7565ab26-8d1f-48f9-9cd9-87e041292bdd
+      # namespace: 7565ab26-8d1f-48f9-9cd9-87e041292bdd
   #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://192.168.17.135:3306/guli_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false
