@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -34,6 +35,17 @@ public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
 
+    @GetMapping("withattrs/cat/{catId}")
+    public Resp<List<GroupVO>> queryGroupWithAttrsByCid(@PathVariable("catId") Long cid) {
+        List<GroupVO> groupVOS = this.attrGroupService.queryGroupWithAttrsByCid(cid);
+        return Resp.ok(groupVOS);
+    }
+
+    /**
+     * 根据分组id查询分组及组下的规格参数
+     * @param gid
+     * @return
+     */
     @ApiOperation("根据分组id查询分组及组下的规格参数")
     @GetMapping("withattr/{gid}")
     public Resp<GroupVO> queryGroupWithAttrByGid(@PathVariable("gid") Long gid) {
@@ -41,6 +53,12 @@ public class AttrGroupController {
         return Resp.ok(groupVO);
     }
 
+    /**
+     * 根据三级分类id分页查询
+     * @param condition
+     * @param catId
+     * @return
+     */
     @ApiOperation("根据三级分类id分页查询")
     @GetMapping("{catId}")
     public Resp<PageVo> queryGroupByPage(QueryCondition condition,@PathVariable("catId") Long catId){

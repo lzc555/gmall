@@ -18,7 +18,6 @@ import com.atguigu.gmall.pms.dao.AttrGroupDao;
 import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.atguigu.gmall.pms.service.AttrGroupService;
 import org.springframework.util.CollectionUtils;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,6 +72,18 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         List<AttrEntity> attrEntities = this.attrDao.selectBatchIds(attrIds);
         groupVO.setAttrEntities(attrEntities);
         return groupVO;
+    }
+
+    @Override
+    public List<GroupVO> queryGroupWithAttrsByCid(Long cid) {
+        //查询出所有分组
+        List<AttrGroupEntity> attrgroupEntities = this.list(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", cid));
+
+        //查询出每组下的规格参数
+        List<GroupVO> attrGroupVOs = attrgroupEntities.stream().map(attrGroupEntity -> {
+            return this.queryGroupWithAttrByGid(attrGroupEntity.getAttrGroupId());
+        }).collect(Collectors.toList());
+        return attrGroupVOs;
     }
 
 }

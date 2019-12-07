@@ -8,6 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
+ * 属性组，属性信息，中间表信息
  * @author lzc
  * @create 2019-12-03 18:01
  */
