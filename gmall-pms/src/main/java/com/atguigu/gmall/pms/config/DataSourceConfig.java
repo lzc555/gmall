@@ -6,14 +6,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-
 import javax.sql.DataSource;
 
 /**
  * @author lzc
  * @create 2019-12-04 21:22
  */
-
+//@Configuration
 public class DataSourceConfig {
 
 //    @Bean
