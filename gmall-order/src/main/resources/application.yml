@@ -1,0 +1,21 @@
+server:
+  port: 8091
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.17.135:8848
+  rabbitmq:
+    host: 192.168.17.135
+    port: 5672
+    virtual-host: /lzc
+    username: lzc
+    password: 782954
+  redis:
+    host: 192.168.17.135
+    port: 6379
+gmall:
+  jwt:
+    pubKeyPath: D:\JAVALearnningProgram\gmall-vue\\rsa.pub # 公钥地址
+    cookieName: GMALL_TOKEN
+    userKey: user-key

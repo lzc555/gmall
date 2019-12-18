@@ -5,8 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
-
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -39,8 +37,8 @@ public class Goods {
     @Field(type = FieldType.Long)
     private Long sale;              //销量
 
-    @Field(type = FieldType.Long)
-    private Long store;             //是否有货
+    @Field(type = FieldType.Boolean)
+    private Boolean store;             //是否有货
 
     @Field(type = FieldType.Date)
     private Date createTime;        //创建时间

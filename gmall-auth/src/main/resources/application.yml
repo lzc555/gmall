@@ -1,0 +1,14 @@
+server:
+  port: 8089
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.17.135:8848
+gmall:
+  jwt:
+    pubKeyPath: D:\JAVALearnningProgram\gmall-vue\\rsa.pub # 公钥地址
+    priKeyPath: D:\JAVALearnningProgram\gmall-vue\\rsa.pri # 私钥地址
+    secret: 234
+    expire: 180 # 过期时间,单位分钟
+    cookieName: GMALL_TOKEN

@@ -33,9 +33,12 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         return new PageVo(page);
     }
 
+
     @Override
     public List<ProductAttrValueEntity> querySearchAttrValueBySpuId(Long spuId) {
+
         return this.productAttrValueDao.querySearchAttrValueBySpuId(spuId);
+
     }
 
 }

@@ -42,7 +42,7 @@ public class WareSkuController {
      */
     @ApiOperation("根据skuId查询库存信息")
     @GetMapping("{skuId}")
-    public Resp<List<WareSkuEntity>> queryWareSkuBySkuId(@PathVariable("skuId")Long skuId){
+    public Resp<List<WareSkuEntity>> queryWareSkusBySkuId(@PathVariable("skuId")Long skuId){
 
         List<WareSkuEntity> wareSkuEntities = this.wareSkuService.list(new QueryWrapper<WareSkuEntity>().eq("sku_id", skuId));
 

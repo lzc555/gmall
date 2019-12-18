@@ -37,7 +37,7 @@ public class SkuInfoController {
 
     @ApiOperation("查询spu下的sku")
     @GetMapping("{spuId}")
-    public Resp<List<SkuInfoEntity>> querySkuBySpuId(@PathVariable("spuId")Long spuId){
+    public Resp<List<SkuInfoEntity>> querySkusBySpuId(@PathVariable("spuId")Long spuId){
         List<SkuInfoEntity> skuInfoEntities = this.skuInfoService.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id", spuId));
         return Resp.ok(skuInfoEntities);
     }

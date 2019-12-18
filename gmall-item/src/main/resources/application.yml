@@ -1,0 +1,7 @@
+server:
+  port: 8088
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.17.135:8848

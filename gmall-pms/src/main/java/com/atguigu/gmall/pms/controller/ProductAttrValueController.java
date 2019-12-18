@@ -35,8 +35,10 @@ public class ProductAttrValueController {
     private ProductAttrValueService productAttrValueService;
 
     @GetMapping("{spuId}")
-    public Resp<List<ProductAttrValueEntity>> querySearchAttrValueBySpuId(@PathVariable("spuId") Long spuId){
+    public Resp<List<ProductAttrValueEntity>> querySearchAttrValueBySpuId(@PathVariable("spuId")Long spuId){
+
         List<ProductAttrValueEntity> searchAttrValues = this.productAttrValueService.querySearchAttrValueBySpuId(spuId);
+
         return Resp.ok(searchAttrValues);
     }
 

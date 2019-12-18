@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface GmallWmsApi {
     @GetMapping("wms/waresku/{skuId}")
-    public Resp<List<WareSkuEntity>> queryWareSkuBySkuId(@PathVariable("skuId")Long skuId);
+    public Resp<List<WareSkuEntity>> queryWareSkusBySkuId(@PathVariable("skuId")Long skuId);
 }

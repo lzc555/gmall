@@ -12,8 +12,10 @@ import com.atguigu.gmall.pms.vo.BaseAttrVO;
 import com.atguigu.gmall.pms.vo.SkuInfoVO;
 import com.atguigu.gmall.pms.vo.SpuInfoVO;
 import com.atguigu.gmall.sms.vo.SkuSaleVO;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -57,6 +59,11 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     @Autowired
     private SpuInfoDescService spuInfoDescService;
 
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
+    @Value("${item.rabbitmq.exchange}")
+    private String EXCHANGE_NAME;
 
     @Override
     public PageVo queryPage(QueryCondition params) {
@@ -168,6 +175,11 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             skuSaleVO.setSkuId(skuId);
             this.gmallSmsClient.saveSale(skuSaleVO);
         });
+        sendMsg("insert",spuId);
+    }
+
+    private void sendMsg(String type,Long spuId){
+        this.amqpTemplate.convertAndSend(EXCHANGE_NAME,"item."+type,spuId);
     }
 
 
